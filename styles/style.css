@@ -1,0 +1,207 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0a192f;
+    font-family: 'Playfair Display', serif;
+    color: white;
+    overflow: hidden;
+    /* Add festive background pattern */
+    background: linear-gradient(
+        rgba(10, 25, 47, 0.95), 
+        rgba(10, 25, 47, 0.95)
+    ),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z' fill='rgba(255, 255, 255, 0.1)'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.photo-container::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vmin;  /* Adjust the width to leave space on sides */
+    height: 80vmin;  /* Keep aspect ratio square */
+    background: url('../images/couple-photo.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.4);
+    z-index: -1;
+    border-radius: 20px;  /* Optional: adds rounded corners */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);  /* Optional: adds depth */
+}
+
+/* Add decorative elements on the sides */
+body::before,
+body::after {
+    content: '🎄';
+    position: fixed;
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+    z-index: -1;
+}
+
+body::before {
+    left: 5%;
+    top: 20%;
+}
+
+body::after {
+    right: 5%;
+    top: 20%;
+    animation-delay: 1.5s;
+}
+
+/* Add more decorative elements */
+.decoration {
+    position: fixed;
+    font-size: 1.5rem;
+    z-index: -1;
+    opacity: 0.6;
+    animation: float 3s ease-in-out infinite;
+}
+
+.decoration:nth-child(1) { left: 10%; top: 40%; content: '🎅'; animation-delay: 0.5s; }
+.decoration:nth-child(2) { right: 10%; top: 60%; content: '🎁'; animation-delay: 1s; }
+.decoration:nth-child(3) { left: 15%; bottom: 30%; content: '⭐'; animation-delay: 1.5s; }
+.decoration:nth-child(4) { right: 15%; bottom: 40%; content: '🔔'; animation-delay: 2s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Present Styles */
+.present {
+    position: fixed;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.present:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+.present-body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff4e50;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.present-top {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background: #f9d423;
+    top: -15px;
+    border-radius: 5px;
+    transform-origin: bottom;
+    transition: transform 0.5s ease;
+}
+
+.present::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    background: #f9d423;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.present::before {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    background: #f9d423;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Content Styles */
+#content {
+    position: fixed;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(10, 25, 47, 0.7);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 20px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.5s ease;
+}
+
+#content.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hidden {
+    display: none;
+}
+
+#merry-christmas {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(45deg, #ff4e50, #f9d423);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+}
+
+#surprise {
+    font-size: 2rem;
+    margin: 2rem 0;
+    color: #64ffda;
+}
+
+#ticket {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 15px;
+    margin-top: 2rem;
+    color: #0a192f;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(100, 255, 218, 0.3);
+}
+
+#ticket p {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+#ticket .subtitle {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: #666;
+}
+
+.snowflake {
+    position: fixed;
+    color: white;
+    font-size: 1.2em;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    user-select: none;
+    pointer-events: none;
+}
