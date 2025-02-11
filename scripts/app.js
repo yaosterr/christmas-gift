@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // You can add more animations or interactivity here.
-    console.log('Merry Christmas!');
+    // Initialize snowfall
+    createSnowflakes();
 });
 
 // Create snowfall effect
@@ -36,20 +36,75 @@ document.head.appendChild(style);
 
 // Present click handler
 document.getElementById('present').addEventListener('click', function() {
-    // Animate present opening (modified to maintain centering)
+    // Animate present opening
     this.style.transform = 'translateX(-50%) scale(0.1) translateY(-1000px)';
     this.style.opacity = '0';
     
-    // Show content after present disappears
+    // Show Christmas content after present disappears
     setTimeout(() => {
         this.style.display = 'none';
-        const content = document.getElementById('content');
-        content.classList.remove('hidden');
+        const christmasContent = document.getElementById('christmas-content');
+        christmasContent.classList.remove('hidden');
         setTimeout(() => {
-            content.classList.add('visible');
+            christmasContent.classList.add('visible');
+            // Show continue button after content is visible
+            setTimeout(() => {
+                document.getElementById('continue-btn').classList.remove('hidden');
+            }, 2000);
         }, 100);
     }, 500);
 });
 
-// Initialize snowfall
-createSnowflakes();
+// Continue button click handler
+document.getElementById('continue-btn').addEventListener('click', function() {
+    // Hide Christmas content and decorations
+    document.getElementById('christmas-content').classList.remove('visible');
+    document.querySelector('.christmas-decorations').classList.add('hidden');
+    
+    // Show Valentine's content and decorations
+    setTimeout(() => {
+        document.getElementById('christmas-content').classList.add('hidden');
+        document.querySelector('.valentine-decorations').classList.remove('hidden');
+        document.getElementById('valentine-content').classList.remove('hidden');
+        setTimeout(() => {
+            document.getElementById('valentine-content').classList.add('visible');
+        }, 100);
+    }, 500);
+});
+
+// Make the "No" button run away with more controlled movement
+document.getElementById('no-btn').addEventListener('mouseover', function() {
+    const btn = this;
+    const container = document.querySelector('.valentine-buttons');
+    const containerRect = container.getBoundingClientRect();
+    const btnRect = btn.getBoundingClientRect();
+
+    // Calculate maximum positions while keeping button within container
+    const maxX = containerRect.width - btnRect.width;
+    const maxY = containerRect.height - btnRect.height;
+
+    // Generate new random position
+    let randomX = Math.random() * maxX;
+    let randomY = Math.random() * maxY;
+
+    // Ensure minimum movement distance but not too far
+    const minDistance = 100; // Reduced minimum pixels to move
+    const currentX = btnRect.left - containerRect.left;
+    const currentY = btnRect.top - containerRect.top;
+
+    // Adjust position if too close to current position
+    while (Math.abs(randomX - currentX) < minDistance) {
+        randomX = Math.random() * maxX;
+    }
+
+    btn.style.transition = 'all 0.3s ease';
+    btn.style.position = 'absolute';
+    btn.style.left = `${randomX}px`;
+    btn.style.top = `${randomY}px`;
+});
+
+// "Yes" button click handler
+document.getElementById('yes-btn').addEventListener('click', function() {
+    const message = document.querySelector('.valentine-message');
+    message.innerHTML = '<p class="success-message">I love you! ❤️</p>';
+});

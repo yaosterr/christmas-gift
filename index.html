@@ -3,26 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merry Christmas</title>
+    <title>For My Love</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <div class="photo-container"></div>
-    <div class="decoration">🎅</div>
-    <div class="decoration">🎁</div>
-    <div class="decoration">⭐</div>
-    <div class="decoration">🔔</div>
+    <!-- Christmas decorations -->
+    <div class="christmas-decorations">
+        <div class="decoration">🎅</div>
+        <div class="decoration">🎁</div>
+        <div class="decoration">⭐</div>
+        <div class="decoration">🔔</div>
+    </div>
+    <!-- Valentine's decorations (initially hidden) -->
+    <div class="valentine-decorations hidden">
+        <div class="decoration">💝</div>
+        <div class="decoration">🌹</div>
+        <div class="decoration">💕</div>
+        <div class="decoration">💘</div>
+    </div>
+    
+    <!-- Christmas Content -->
     <div class="present" id="present">
         <div class="present-top"></div>
         <div class="present-body"></div>
     </div>
-    <div id="content" class="hidden">
+    <div id="christmas-content" class="hidden">
         <h1 id="merry-christmas">Merry Christmas Baby!</h1>
         <h2 id="surprise">My Gift to You:</h2>
         <div id="ticket">
             <p>A Plane Ticket to Hong Kong (or wherever in Asia) in 2025 ✈️</p>
             <p class="subtitle">So we can be together again ❤️</p>
+        </div>
+        <button id="continue-btn" class="continue-button hidden">
+            Wait... there's more! ❤️
+        </button>
+    </div>
+
+    <!-- Valentine's Content (initially hidden) -->
+    <div id="valentine-content" class="hidden">
+        <div class="heart-container">
+            <h1 class="valentine-title">My Honey...</h1>
+            <div class="valentine-message">
+                <p>Will you be my Valentine?</p>
+                <div class="valentine-buttons">
+                    <button id="yes-btn" class="valentine-btn">Yes! 💝</button>
+                    <button id="no-btn" class="valentine-btn moving-btn">No</button>
+                </div>
+            </div>
         </div>
     </div>
     <script src="scripts/app.js"></script>

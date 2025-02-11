@@ -205,3 +205,131 @@ body::after {
     user-select: none;
     pointer-events: none;
 }
+
+/* Valentine's specific styles */
+.continue-button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: #ff4e50;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Playfair Display', serif;
+}
+
+.continue-button:hover {
+    transform: scale(1.05);
+    background: #ff6b6d;
+}
+
+.valentine-decorations,
+.christmas-decorations {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#valentine-content {
+    position: fixed;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 192, 203, 0.9);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 20px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.5s ease;
+}
+
+#valentine-content.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.heart-container {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.valentine-title {
+    color: #ff4e50;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.valentine-message {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.valentine-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    min-height: 100px;
+}
+
+.valentine-btn {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Playfair Display', serif;
+}
+
+#yes-btn {
+    background: #ff4e50;
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 78, 80, 0.3);
+}
+
+#yes-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 78, 80, 0.4);
+}
+
+#no-btn {
+    background: #666;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.moving-btn {
+    position: absolute;
+    transition: all 0.2s ease;
+}
+
+.success-message {
+    color: #ff4e50;
+    font-size: 2.5rem;
+    animation: heartBeat 1s infinite;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Valentine's decorations positions */
+.valentine-decorations .decoration:nth-child(1) { left: 10%; top: 40%; }
+.valentine-decorations .decoration:nth-child(2) { right: 10%; top: 60%; }
+.valentine-decorations .decoration:nth-child(3) { left: 15%; bottom: 30%; }
+.valentine-decorations .decoration:nth-child(4) { right: 15%; bottom: 40%; }
